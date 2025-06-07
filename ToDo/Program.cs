@@ -43,9 +43,9 @@ do
         case 2:
             Console.Write("Ingrese la descripcion de la tarea a buscar: ");
             string descripcion = Console.ReadLine() ?? string.Empty;
-            if (listaPendientes.Any(t => t.Descripcion == descripcion))
+            if (listaPendientes.Any(t => t.Descripcion.Equals(descripcion.Trim())))
             {
-                Tarea tareaEncontrada = listaPendientes.First(t => t.Descripcion == descripcion);
+                Tarea tareaEncontrada = listaPendientes.First(t => t.Descripcion.Equals(descripcion.Trim()));
                 Console.WriteLine($"Tarea encontrada: ID {tareaEncontrada.TareaID}, Descripción: {tareaEncontrada.Descripcion}, Duración: {tareaEncontrada.Duracion}s");
             }
             else
@@ -60,7 +60,7 @@ do
             listaRealizadas.ForEach(t => Console.WriteLine($"\tID: {t.TareaID}, Descripción: {t.Descripcion}, Duración: {t.Duracion}s"));
             break;
         case 4:
-            Console.WriteLine("Saliendo del programa...");
+            Console.WriteLine("\nSaliendo del programa...\n");
             break;
         default:
             Console.WriteLine("Opción no válida. Por favor, intente de nuevo.");
